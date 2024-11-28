@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colour-Gradient Generator</title>
+    <link rel="shortcut icon" href="color.ico" type="image/x-icon">
+</head>
+
+<body>
+    <style>
+        .copyCode {
+            gap: 20px;
+            font-size: 25px;
+            height: calc(100%-100px);
+            color: rgb(0, 0, 0);
+            font-weight: 900;
+            display: flex;
+            position: relative;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            align-content: center;
+            transform: translateY(80%);
+
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #btn-1 {
+            cursor: pointer;
+            border-radius: 20px;
+            font-size: 30px;
+            background-color: rgb(190, 190, 18);
+            box-shadow: 2px 2px 5px ;
+            
+        }
+
+        #btn-2 {
+            cursor: pointer;
+            border-radius: 20px;
+            font-size: 30px;
+            background-color: rgb(141, 18, 190);
+            box-shadow: 2px 2px 5px ;
+        }
+    </style>
+    <section>
+
+        <div class="copyCode">
+            <div>
+                <button id="btn-1">#051937</button>
+                <button id="btn-2">#008793</button>
+
+            </div>
+            <h2 style="font-size: large;">Copy your code here</h2>
+            <div id="que"> background-image:linear-gradient(to right , #111 , #444)</div>
+        </div>
+
+    </section>
+    <script>
+        let btn1 = document.getElementById('btn-1');
+        let btn2 = document.getElementById('btn-2');
+        let que1 = document.querySelector('#que');
+        let rgb1 = "333";
+        let rgb2 = "fff";
+        const hexValues = () => {
+            let rand = "0123456789abcdef";
+            let color = "#";
+            for (let i = 0; i < 6; i++) {
+                color = color + rand[Math.floor(Math.random() * 16)];
+
+            }
+            return color;
+
+        };
+        const handlebtn1 = () => {
+            rgb1 = hexValues();
+            console.log(rgb1);
+            btn1.innerText = rgb1;
+            document.body.style.backgroundImage = `linear-gradient(to right , ${rgb1} , ${rgb2})`;
+
+            que1.innerHTML = `background-image:linear-gradient(to right , ${rgb1} , ${rgb2})`;
+        };
+        const handlebtn2 = () => {
+            rgb2 = hexValues();
+            console.log(rgb2);
+            btn2.innerText = rgb2;
+            document.body.style.backgroundImage =
+                `linear-gradient(to right, ${rgb1} , ${rgb2})`;
+            let que2 = document.querySelector('#que');
+            que2.innerHTML = `background-image:linear-gradient(to right , ${rgb1} , ${rgb2})`;
+        };
+
+        btn1.addEventListener('click', handlebtn1);
+        btn2.addEventListener('click', handlebtn2);
+    </script>
+</body>
+
+</html>
